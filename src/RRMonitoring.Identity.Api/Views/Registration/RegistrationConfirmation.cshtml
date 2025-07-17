@@ -1,0 +1,33 @@
+@model RRMonitoring.Identity.Api.ViewModels.RegistrationConfirmationViewModel;
+
+<div class="container">
+    <div class="card">
+        <img class="card__logo" src="~/assets/images/logo.png" alt="RedRock Pool">
+
+        @if (Model.IsTokenValid)
+        {
+            <div class="card__title">
+                Поздравляем!<br>
+                Учетная запись подтверждена!
+            </div>
+
+            <div>
+                Email адрес успешно подтвержден. Теперь вы можете войти.
+            </div>
+
+            <a href="@Model.LoginUrl" class="primary-button">Войти</a>
+        }
+        else
+        {
+            <div class="card__title">
+                Срок действия ссылки истек
+            </div>
+
+            <div>
+                Срок действия ссылки истек. Для подтверждения Вашей почты необходимо выполнить процедуру восстановления пароля.
+            </div>
+
+            <a href="/identity/forgot-password" class="primary-button">Восстановить пароль</a>
+        }
+    </div>
+</div>

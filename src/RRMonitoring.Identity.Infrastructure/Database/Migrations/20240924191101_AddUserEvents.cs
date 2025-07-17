@@ -1,0 +1,44 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace RRMonitoring.Identity.Infrastructure.Database.Migrations;
+
+public partial class AddUserEvents : Migration
+{
+	protected override void Up(MigrationBuilder migrationBuilder)
+	{
+		migrationBuilder.CreateTable(
+			name: "user_events",
+			columns: table => new
+			{
+				id = table.Column<Guid>(type: "uuid", nullable: false),
+				user_id = table.Column<Guid>(type: "uuid", nullable: false),
+				event_kind = table.Column<string>(type: "text", nullable: false),
+				event_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
+				block_end_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+			},
+			constraints: table =>
+			{
+				table.PrimaryKey("pk_user_events", x => x.id);
+				table.ForeignKey(
+					name: "fk_user_events_user_user_id",
+					column: x => x.user_id,
+					principalTable: "user",
+					principalColumn: "id",
+					onDelete: ReferentialAction.Cascade);
+			});
+
+		migrationBuilder.CreateIndex(
+			name: "ix_user_events_user_id",
+			table: "user_events",
+			column: "user_id");
+	}
+
+	protected override void Down(MigrationBuilder migrationBuilder)
+	{
+		migrationBuilder.DropTable(
+			name: "user_events");
+	}
+}

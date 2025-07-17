@@ -1,0 +1,11 @@
+﻿{
+	"$schema": "http://json.schemastore.org/launchsettings.json",
+	"profiles": {
+		"RRMonitoring.Equipment.Agent": {
+			"commandName": "Project",
+			"environmentVariables": {
+				"DOTNET_ENVIRONMENT": "Development"
+			}
+		}
+	}
+}

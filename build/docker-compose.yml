@@ -1,0 +1,26 @@
+volumes:
+  redrock_monitoring_minio:
+    name: redrock_monitoring_minio
+
+networks:
+  redrock_monitoring_network:
+    name: redrock_monitoring_network
+
+services:
+  minio:
+    image: minio/minio
+    container_name: redrock_monitoring_minio
+    restart: always
+    environment:
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minio_access_key}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minio_secret_key}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio_user}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minio_pass}
+    ports:
+      - 9001:9001
+      - 9000:9000
+    command: server /data --console-address ":9001"
+    volumes:
+      - redrock_monitoring_minio:/data
+    networks:
+      - redrock_monitoring_network

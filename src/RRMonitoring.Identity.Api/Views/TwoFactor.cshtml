@@ -1,0 +1,45 @@
+@using RRMonitoring.Identity.Api.ViewModels
+@model RRMonitoring.Identity.Api.ViewModels.TwoFactorAuthViewModel;
+
+<div class="container">
+    <div class="card">
+        <img class="card__logo" src="~/assets/images/logo.png" alt="RedRock Pool">
+
+        <div class="card__title">
+            Аутентификация
+        </div>
+
+        <div>
+            Для получения доступа к операции необходимо соблюсти дополнительные меры безопасности. Введите код из Google Authenticator
+        </div>
+
+        <form id="form" method="post" novalidate>
+            <input type="text" id="digit-code-input" name="Code" class="digit-code__input" maxlength="6" autofocus autocomplete="off"/>
+
+            @if (Model?.ErrorList?.Any() == true)
+            {
+                <div class="card__form-error-messages">
+                    @foreach (var error in Model.ErrorList)
+                    {
+                        <div class="card__form-error-message">@error</div>
+                    }
+                </div>
+            }
+
+            <button type="submit" id="digit-code-button" name="submitButton" disabled>Подтвердить</button>
+        </form>
+
+        <div class="card__footer">
+            Код Google Authenticator утерян? Обратитесь к support@redrock.org
+        </div>
+    </div>
+</div>
+
+@if (Model.DisplayAgreementModal)
+{
+    @await Html.PartialAsync("Partials/_Agreement.cshtml", new UserAgreementViewModel
+    {
+        ReturnUrl = Model.ReturnUrl,
+        AgreementUrl = Model.AgreementUrl
+    })
+}

@@ -1,0 +1,18 @@
+﻿{
+	"$schema": "http://json.schemastore.org/launchsettings.json",
+	"profiles": {
+		"RRMonitoring.Bff.Admin.Api": {
+			"commandName": "Project",
+			"applicationUrl": "http://localhost:5601",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		},
+		"Docker": {
+			"commandName": "Docker",
+			"launchBrowser": true,
+			"launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+			"environmentVariables": {}
+		}
+	}
+}

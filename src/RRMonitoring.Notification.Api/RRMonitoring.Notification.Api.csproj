@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <UserSecretsId>79bee8b1-8577-405d-bef1-05420f2fe646</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2"/>
+    <PackageReference Include="Nomium.Core" Version="1.0.1"/>
+    <PackageReference Include="Nomium.Core.Application" Version="1.0.1"/>
+    <PackageReference Include="Nomium.Core.AutoMapper" Version="1.0.0"/>
+    <PackageReference Include="Nomium.Core.Cache" Version="1.0.0"/>
+    <PackageReference Include="Nomium.Core.MassTransit" Version="1.0.0"/>
+    <PackageReference Include="Nomium.Core.MediatR" Version="1.0.0"/>
+    <PackageReference Include="Nomium.Core.Prometheus.Contrib" Version="1.0.0"/>
+    <PackageReference Include="Nomium.Core.Security" Version="1.0.1"/>
+    <PackageReference Include="Nomium.Core.Swagger" Version="1.0.2"/>
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1"/>
+    <PackageReference Include="prometheus-net.SystemMetrics" Version="3.1.0"/>
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3"/>
+    <PackageReference Include="Serilog.Enrichers.Context" Version="4.6.5"/>
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1"/>
+    <PackageReference Include="Serilog.Enrichers.Span" Version="3.1.0"/>
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0"/>
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4"/>
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0"/>
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRMonitoring.Identity.BusEvents\RRMonitoring.Identity.BusEvents.csproj"/>
+    <ProjectReference Include="..\RRMonitoring.Notification.Application\RRMonitoring.Notification.Application.csproj"/>
+    <ProjectReference Include="..\RRMonitoring.Notification.BusEvents\RRMonitoring.Notification.BusEvents.csproj"/>
+    <ProjectReference Include="..\RRMonitoring.Notification.Domain\RRMonitoring.Notification.Domain.csproj"/>
+    <ProjectReference Include="..\RRMonitoring.Notification.Infrastructure\RRMonitoring.Notification.Infrastructure.csproj"/>
+  </ItemGroup>
+
+</Project>

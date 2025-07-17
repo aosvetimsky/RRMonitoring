@@ -1,0 +1,26 @@
+@model RRMonitoring.Identity.Api.ViewModels.UserAgreementViewModel
+
+<div id="agreement-modal" class="modal agreement-modal" tabindex="-1" style="display: unset">
+    <div class="agreement-form">
+        <div class="agreement-form__content">
+            <div class="agreement-form__header">
+                <svg><use href="/identity/assets/images/sprite.svg#error"></use></svg>
+                <span class="agreement-form__header--title agreement-modal__header">Пользовательское соглашение</span>
+            </div>
+            <div class="agreement-form__body">
+                <p class="agreement-modal__description">
+                    Для доступа к системе, пожалуйста, ознакомьтесь и согласитесь с условиями
+                    <a href="@Model.AgreementUrl" target="_blank" rel="noopener noreferrer">политики обработки персональных данных</a>
+                </p>
+            </div>
+            <div class="agreement-form__footer">
+                <form id="agreement-form" name="agreement-form" method="post">
+                    <button id="reject-agreement-btn" class="agreement-form__button agreement-form__button--secondary btn btn-secondary"
+                            formaction="@Url.RouteUrl("RejectAgreement", new { ReturnUrl = Model.ReturnUrl })">Выйти</button>
+                    <button id="agreement-accept-btn" class="agreement-form__button agreement-form__button--primary btn btn-primary"
+                            formaction="@Url.RouteUrl("AcceptAgreement", new { ReturnUrl = Model.ReturnUrl })">Согласиться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

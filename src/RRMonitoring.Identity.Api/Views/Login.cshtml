@@ -1,0 +1,65 @@
+@using RRMonitoring.Identity.Api.ViewModels
+@model RRMonitoring.Identity.Api.ViewModels.LoginViewModel;
+
+<div class="container">
+    <div class="card">
+        <img class="card__logo" src="~/assets/images/logo.png" alt="RedRock Pool">
+
+        <div class="card__title">
+            Вход
+        </div>
+
+        <form id="form" method="post" novalidate>
+            @if (Model?.ErrorList?.Any() == true)
+            {
+                <div class="card__form-error-messages">
+                    @foreach (var error in Model.ErrorList)
+                    {
+                        <div class="card__form-error-message">@error</div>
+                    }
+                </div>
+            }
+
+            <label>
+                <input type="text" id="login" name="Login" placeholder="E-mail или телефон" required/>
+            </label>
+
+            <label>
+                <input type="password" id="password" name="Password" placeholder="Пароль" required/>
+                <button type='button' data-field="password" class='password-visibility'>
+                    <svg>
+                        <use href="/identity/assets/images/sprite.svg#eye-closed"></use>
+                    </svg>
+                </button>
+            </label>
+
+            <div class="card__forgot-password">
+                <a href="@Url.RouteUrl("ForgotPassword", new { ReturnUrl = Model.ReturnUrl })" class="secondary">
+                    Забыли пароль?
+                </a>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.YandexSmartCaptchaClientSecret))
+            {
+                <script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
+                <div class="app-form__smart-captcha smart-captcha" data-sitekey="@Model.YandexSmartCaptchaClientSecret"></div>
+            }
+
+            <button type="submit" id="submitButton" name="submitButton" disabled>Войти</button>
+        </form>
+
+        <div class="card__footer">
+            <span>Нет аккаунта? </span>
+            <a href="@Model.RegistrationUrl" class="secondary">Зарегистрируйтесь!</a>
+        </div>
+    </div>
+</div>
+
+@if (Model.DisplayAgreementModal)
+{
+    @await Html.PartialAsync("Partials/_Agreement.cshtml", new UserAgreementViewModel
+    {
+        ReturnUrl = Model.ReturnUrl,
+        AgreementUrl = Model.AgreementUrl
+    })
+}

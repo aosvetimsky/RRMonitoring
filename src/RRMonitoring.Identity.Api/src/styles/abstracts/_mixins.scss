@@ -1,0 +1,7 @@
+@mixin filter-orange-color() {
+  filter: brightness(0) saturate(100%) invert(53%) sepia(83%) saturate(3688%) hue-rotate(346deg) brightness(98%) contrast(94%);
+}
+
+@mixin filter-light-grey-color() {
+  filter: brightness(0) saturate(100%) invert(97%) sepia(6%) saturate(777%) hue-rotate(180deg) brightness(96%) contrast(97%);
+}

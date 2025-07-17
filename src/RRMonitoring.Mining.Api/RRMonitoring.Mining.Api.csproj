@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <UserSecretsId>77ea18a4-260b-4b0f-9e65-e24d8ace1931</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nomium.Core.AutoMapper" Version="2.0.0" />
+    <PackageReference Include="Nomium.Core.Data.EntityFrameworkCore" Version="2.0.0" />
+    <PackageReference Include="Nomium.Core.OpenTelemetry" Version="1.0.0" />
+    <PackageReference Include="Nomium.Core.Prometheus.Contrib" Version="1.0.0" />
+    <PackageReference Include="Nomium.Core.Security" Version="2.0.0" />
+    <PackageReference Include="Nomium.Core.Swagger" Version="2.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
+    <PackageReference Include="prometheus-net.SystemMetrics" Version="3.1.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRMonitoring.Mining.Application\RRMonitoring.Mining.Application.csproj" />
+    <ProjectReference Include="..\RRMonitoring.Mining.Infrastructure\RRMonitoring.Mining.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

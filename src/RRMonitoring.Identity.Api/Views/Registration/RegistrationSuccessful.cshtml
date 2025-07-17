@@ -1,0 +1,25 @@
+@model RRMonitoring.Identity.Api.ViewModels.RegistrationSuccessfulViewModel;
+
+<div class="container">
+    <div class="card">
+        <img class="card__logo" src="~/assets/images/logo.png" alt="RedRock Pool">
+
+        <div class="card__title">
+            Подтвердите свой E-mail
+        </div>
+
+        <div>
+            @Model.Email
+        </div>
+
+        <div>
+            Поздравляем с успешной регистрацией! Мы пришлем Вам письмо на указанный при регистрации адрес электронный почты.
+        </div>
+
+        <div>
+            Вам нужно будет пройти по ссылке в письме, чтобы подтвердить только что созданную учетную запись.
+        </div>
+
+        <a href="@Model.LoginUrl" class="primary-button">Войти</a>
+    </div>
+</div>

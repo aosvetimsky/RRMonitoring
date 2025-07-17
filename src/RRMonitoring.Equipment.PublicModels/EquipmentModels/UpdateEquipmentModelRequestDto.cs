@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace RRMonitoring.Equipment.PublicModels.EquipmentModels;
+
+public class UpdateEquipmentModelRequestDto
+{
+	public Guid Id { get; set; }
+
+	public string Name { get; set; }
+
+	public Guid ManufacturerId { get; set; }
+
+	public byte HashrateUnitId { get; set; }
+
+	public decimal NominalHashrate { get; set; }
+
+	public int NominalPower { get; set; }
+
+	public int MaxMotherBoardTemperature { get; set; }
+
+	public int MaxProcessorTemperature { get; set; }
+
+	public IReadOnlyList<byte> CoinIds { get; set; }
+}
